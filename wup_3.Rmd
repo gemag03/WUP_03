@@ -42,7 +42,7 @@ ggplot(davisdata, aes(x = Seat, y = alcohol)) +
 ```
 
 
-
+I can see the back has a higher median and is different than the front and middle seats. We can't tell much besides from what we see, but the front and middle do look significantly smaller than the back. 
 
 ## Numerical Summarys 
 
@@ -56,6 +56,21 @@ The people in the back are drinking more compared to the people in the front and
 
 ## Inferential Tests
 
+```{r}
+model1 <- aov(alcohol~Seat,data=davisdata)
+summary.aov(model1)
+```
+
+```{r}
+plot(TukeyHSD(model1))
+```
+
+
+
+We ran the first test to see if they are similar but they turned out to all be different. Then we ran the second test which is called tukeyHSD and the line dotted over the zero is a good place to look. The confidence interval crosses over the zero at the middle and the front. 
+
+
+
 ## Conclusions
 
-
+We first used chat gpt to help us get our notched box plot and to make the dots red. We then did the numerical summeries and it told us there was a difference between the middle and the back. The median of the front was 0.The back had the highest mean and in the box plot also showns it is larger. The middle and back do not have much differences from the front and the back. The middle and the back go more with the confidence interval at the zero mark.   
