@@ -24,28 +24,29 @@ mutate(across(where(is.character), as.factor))
 
 
 
-
-
 ## Our Goal is to answer this question Is there a difference between the alcohol consumed between the row
 ## you choose to sit in??
 
 ## Now with ggplot - first select the basic data
 
-```{r}
-basicCN <- ggplot(davisdata,aes(y=alcohol,x=Seat))
-```
-## Now add in boxplot
 
 ```{r}
-basicCN + geom_boxplot()
-```
-  
-  
-### get fancy  
+library(ggplot2)
 
-```{r}
-basicCN + geom_boxplot(notch=TRUE,outlier.color = "red") + stat_boxplot(geom ='errorbar') + labs(title="Fancy notch boxplot \n with 2 lines")
+# Assuming your data frame is called "davisdata"
+ggplot(davisdata, aes(x = Seat, y = alcohol)) +
+  geom_boxplot(notch = TRUE, outlier.colour = "red") +
+  labs(title = "Notched Box Plot of Alcohol by Seat") +
+  theme(plot.title = element_text(hjust = 0.5))
+
 ```
+
+
+
+
+
+
+
 
 ## Numerical Summarys 
 
